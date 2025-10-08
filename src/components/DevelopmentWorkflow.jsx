@@ -289,15 +289,15 @@ const DevelopmentWorkflow = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="max-w-7xl mx-auto space-y-6 md:space-y-8">
         <header className="text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <GitBranch className="w-10 h-10 text-blue-600" />
-            <h1 className="text-4xl font-bold text-gray-900">Chainsight AI Development Pipeline & Budget Overview</h1>
+            <GitBranch className="w-8 h-8 md:w-10 md:h-10 text-blue-600" />
+            <h1 className="text-2xl md:text-4xl font-bold text-gray-900">Chainsight AI Development Pipeline & Budget Overview</h1>
           </div>
-          <p className="text-lg text-gray-600">8-Week Sprint Timeline with Role-Based Task Breakdown</p>
-          <div className="mt-4 flex items-center justify-center gap-4 text-sm">
+          <p className="text-base md:text-lg text-gray-600">8-Week Sprint Timeline with Role-Based Task Breakdown</p>
+          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs md:text-sm">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-gray-500" />
               <span className="text-gray-600">Duration: 8 Weeks</span>
@@ -305,7 +305,7 @@ const DevelopmentWorkflow = () => {
           </div>
         </header>
 
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {roles.map(role => {
             const RoleIcon = role.icon;
             const totalHours = getTotalHours(role.id);
@@ -313,13 +313,13 @@ const DevelopmentWorkflow = () => {
               <button
                 key={role.id}
                 onClick={() => setSelectedRole(selectedRole === role.id ? null : role.id)}
-                className={`p-4 rounded-lg border-2 transition ${
+                className={`p-3 md:p-4 rounded-lg border-2 transition ${
                   selectedRole === role.id
                     ? `bg-${role.color}-50 border-${role.color}-500`
                     : 'bg-white border-gray-200 hover:border-gray-300'
                 }`}
               >
-                <RoleIcon className={`w-8 h-8 text-${role.color}-600 mx-auto mb-2`} />
+                <RoleIcon className={`w-6 h-6 md:w-8 md:h-8 text-${role.color}-600 mx-auto mb-2`} />
                 <h3 className="font-bold text-gray-900 text-sm mb-1">{role.name}</h3>
                 <p className="text-xs text-gray-600 mb-2">{role.person}</p>
                 <p className="text-xs font-medium text-gray-900">{totalHours}h total</p>
@@ -328,12 +328,12 @@ const DevelopmentWorkflow = () => {
           })}
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Timeline View</h2>
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-2">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900">Timeline View</h2>
             <div className="flex items-center gap-2">
-              <Play className="w-5 h-5 text-green-600" />
-              <span className="text-sm font-medium text-gray-600">Week 1 Active</span>
+              <Play className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
+              <span className="text-xs md:text-sm font-medium text-gray-600">Week 1 Active</span>
             </div>
           </div>
           
@@ -352,15 +352,15 @@ const DevelopmentWorkflow = () => {
                   
                   <button
                     onClick={() => setSelectedWeek(selectedWeek === week.week ? null : week.week)}
-                    className="w-full text-left bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition"
+                    className="w-full text-left bg-gray-50 rounded-lg p-3 md:p-4 hover:bg-gray-100 transition"
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-2">
                       <div>
-                        <h3 className="text-lg font-bold text-gray-900">Week {week.week}</h3>
-                        <p className="text-sm text-gray-600">{week.phase}</p>
+                        <h3 className="text-base md:text-lg font-bold text-gray-900">Week {week.week}</h3>
+                        <p className="text-xs md:text-sm text-gray-600">{week.phase}</p>
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-600">{progress}%</div>
+                      <div className="text-left sm:text-right">
+                        <div className="text-xl md:text-2xl font-bold text-blue-600">{progress}%</div>
                         <p className="text-xs text-gray-500">Complete</p>
                       </div>
                     </div>
@@ -396,17 +396,19 @@ const DevelopmentWorkflow = () => {
                         const totalHours = tasks.reduce((sum, t) => sum + t.hours, 0);
 
                         return (
-                          <div key={role.id} className={`bg-${role.color}-50 rounded-lg p-4 border border-${role.color}-200`}>
-                            <div className="flex items-center gap-3 mb-3">
-                              <RoleIcon className={`w-5 h-5 text-${role.color}-600`} />
-                              <h4 className="font-bold text-gray-900">{role.name}</h4>
-                              <span className="ml-auto text-sm text-gray-600">{totalHours}h</span>
+                          <div key={role.id} className={`bg-${role.color}-50 rounded-lg p-3 md:p-4 border border-${role.color}-200`}>
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-3">
+                              <div className="flex items-center gap-2">
+                                <RoleIcon className={`w-4 h-4 md:w-5 md:h-5 text-${role.color}-600`} />
+                                <h4 className="font-bold text-gray-900 text-sm md:text-base">{role.name}</h4>
+                              </div>
+                              <span className="text-xs md:text-sm text-gray-600 sm:ml-auto">{totalHours}h</span>
                             </div>
                             <div className="space-y-2">
                               {tasks.map((task, taskIdx) => (
-                                <div key={taskIdx} className="flex items-center justify-between bg-white p-3 rounded">
+                                <div key={taskIdx} className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white p-2 md:p-3 rounded gap-2">
                                   <div className="flex-1">
-                                    <p className="text-sm font-medium text-gray-900">{task.name}</p>
+                                    <p className="text-xs md:text-sm font-medium text-gray-900">{task.name}</p>
                                     <p className="text-xs text-gray-500 mt-1">{task.hours} hours estimated</p>
                                   </div>
                                   <StatusBadge status={task.status} />
@@ -424,13 +426,13 @@ const DevelopmentWorkflow = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Key Milestones</h2>
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Key Milestones</h2>
           <div className="space-y-4">
             {milestones.map((milestone, idx) => (
-              <div key={idx} className="flex gap-4">
+              <div key={idx} className="flex gap-3 md:gap-4">
                 <div className="flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-yellow-100 border-2 border-yellow-500 flex items-center justify-center text-yellow-700 font-bold text-sm">
+                  <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-yellow-100 border-2 border-yellow-500 flex items-center justify-center text-yellow-700 font-bold text-xs md:text-sm">
                     {milestone.week}
                   </div>
                   {idx < milestones.length - 1 && (
@@ -438,17 +440,17 @@ const DevelopmentWorkflow = () => {
                   )}
                 </div>
                 <div className="flex-1 pb-4">
-                  <h3 className="font-bold text-gray-900">{milestone.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{milestone.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm md:text-base">{milestone.title}</h3>
+                  <p className="text-xs md:text-sm text-gray-600 mt-1">{milestone.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Technology Stack</h2>
-          <div className="grid grid-cols-5 gap-4">
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200 p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Technology Stack</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { category: 'Backend', items: ['Django 4.2', 'Django REST', 'PostgreSQL', 'Redis', 'Celery'] },
               { category: 'Frontend', items: ['React 18', 'Tailwind CSS', 'Recharts', 'D3.js', 'Axios'] },
@@ -457,10 +459,10 @@ const DevelopmentWorkflow = () => {
               { category: 'Testing', items: ['Postman', 'Unit Testing'] },
             ].map((stack, idx) => (
               <div key={idx}>
-                <h3 className="font-bold text-gray-900 mb-2">{stack.category}</h3>
+                <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base">{stack.category}</h3>
                 <ul className="space-y-1">
                   {stack.items.map((item, i) => (
-                    <li key={i} className="text-sm text-gray-700">• {item}</li>
+                    <li key={i} className="text-xs md:text-sm text-gray-700">• {item}</li>
                   ))}
                 </ul>
               </div>
@@ -468,9 +470,9 @@ const DevelopmentWorkflow = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">CI/CD Pipeline</h2>
-          <div className="flex items-center justify-between">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
+          <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4">CI/CD Pipeline</h2>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
             {[
               { step: 'Code Push', icon: Code, color: 'blue' },
               { step: 'Build', icon: Server, color: 'purple' },
@@ -482,19 +484,19 @@ const DevelopmentWorkflow = () => {
               return (
                 <React.Fragment key={idx}>
                   <div className="text-center">
-                    <div className={`w-16 h-16 rounded-full bg-${stage.color}-100 flex items-center justify-center mx-auto mb-2`}>
-                      <StageIcon className={`w-8 h-8 text-${stage.color}-600`} />
+                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-${stage.color}-100 flex items-center justify-center mx-auto mb-2`}>
+                      <StageIcon className={`w-6 h-6 md:w-8 md:h-8 text-${stage.color}-600`} />
                     </div>
-                    <p className="text-sm font-medium text-gray-900">{stage.step}</p>
+                    <p className="text-xs md:text-sm font-medium text-gray-900">{stage.step}</p>
                   </div>
                   {idx < 4 && (
-                    <div className="flex-1 h-0.5 bg-gray-300 mx-2"></div>
+                    <div className="flex-1 h-0.5 bg-gray-300 mx-2 hidden sm:block"></div>
                   )}
                 </React.Fragment>
               );
             })}
           </div>
-          <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs md:text-sm">
             <div className="p-3 bg-gray-50 rounded">
               <p className="font-medium text-gray-900 mb-1">Automated Testing</p>
               <p className="text-gray-600">Unit tests on every PR via GitHub Actions</p>
@@ -510,12 +512,12 @@ const DevelopmentWorkflow = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200 p-6">
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border border-green-200 p-4 md:p-6">
           <div className="flex items-center gap-3 mb-4">
-            <Rocket className="w-8 h-8 text-green-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Launch Readiness Checklist</h2>
+            <Rocket className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
+            <h2 className="text-xl md:text-2xl font-bold text-gray-900">Launch Readiness Checklist</h2>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               'All unit tests passing (>80% coverage)',
               'Security audit completed',
@@ -529,15 +531,15 @@ const DevelopmentWorkflow = () => {
               'Privacy policy & terms of service ready',
             ].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2 p-2 bg-white rounded">
-                <input type="checkbox" className="w-4 h-4" />
-                <span className="text-sm text-gray-700">{item}</span>
+                <input type="checkbox" className="w-3 h-3 md:w-4 md:h-4" />
+                <span className="text-xs md:text-sm text-gray-700">{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Cost Breakdown & Budget</h2>
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-200 p-4 md:p-6">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">Cost Breakdown & Budget</h2>
           
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
             <p className="text-sm text-blue-900 mb-2">
@@ -550,7 +552,7 @@ const DevelopmentWorkflow = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
             <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
               <div className="text-center mb-4">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Phase 1: MVP (Foundation)</h3>
@@ -663,7 +665,7 @@ const DevelopmentWorkflow = () => {
 
           <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
             <h3 className="text-lg font-bold text-gray-900 mb-4">Additional Costs & Considerations</h3>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <h4 className="font-bold text-gray-900 mb-3 text-sm">Maintenance & Support</h4>
                 <div className="space-y-2 text-sm">
@@ -711,7 +713,7 @@ const DevelopmentWorkflow = () => {
 
           <div className="mt-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">3-Phase Growth Strategy (Per Document)</h3>
-            <div className="grid grid-cols-3 gap-4 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs md:text-sm">
               <div className="bg-white bg-opacity-20 rounded-lg p-4">
                 <h4 className="font-bold mb-2">Phase 1: MVP (Foundation)</h4>
                 <ul className="space-y-1 text-xs">
@@ -754,7 +756,7 @@ const DevelopmentWorkflow = () => {
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-300 rounded-lg p-5">
               <h4 className="font-bold text-orange-900 mb-3 flex items-center gap-2 text-lg">
                 <AlertCircle className="w-6 h-6" />
@@ -803,7 +805,7 @@ const DevelopmentWorkflow = () => {
             </div>
           </div>
           
-          <div className="mt-6 grid grid-cols-2 gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
               <h4 className="font-bold text-yellow-900 mb-2 flex items-center gap-2">
                 <AlertCircle className="w-5 h-5" />
