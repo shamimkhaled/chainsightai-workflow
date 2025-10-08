@@ -294,7 +294,7 @@ const DevelopmentWorkflow = () => {
         <header className="text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <GitBranch className="w-10 h-10 text-blue-600" />
-            <h1 className="text-4xl font-bold text-gray-900">Chainsight AI Development Pipeline</h1>
+            <h1 className="text-4xl font-bold text-gray-900">Chainsight AI Development Pipeline & Budget Overview</h1>
           </div>
           <p className="text-lg text-gray-600">8-Week Sprint Timeline with Role-Based Task Breakdown</p>
           <div className="mt-4 flex items-center justify-center gap-4 text-sm">
