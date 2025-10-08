@@ -630,7 +630,7 @@ const DevelopmentWorkflow = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between py-1">
                   <span className="text-gray-600">DigitalOcean/AWS</span>
-                  <span className="font-medium text-gray-900">$200-500</span>
+                  <span className="font-medium text-gray-900">$200-500+</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-gray-600">PostgreSQL (Managed)</span>
@@ -642,19 +642,19 @@ const DevelopmentWorkflow = () => {
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-gray-600">OpenAI API</span>
-                  <span className="font-medium text-gray-900">$200-800</span>
+                  <span className="font-medium text-gray-900">$200-800+</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-gray-600">Sayari/Kharon API</span>
                   <span className="font-medium text-gray-900">Contact for pricing</span>
                 </div>
-                <div className="flex justify-between py-1">
+                {/* <div className="flex justify-between py-1">
                   <span className="text-gray-600">WorldCheck/Orbis APIs</span>
                   <span className="font-medium text-gray-900">$500-1,000</span>
-                </div>
+                </div> */}
                 <div className="flex justify-between py-1 border-t border-gray-200 pt-2 mt-2">
                   <span className="font-bold text-gray-900">Monthly Recurring (Base)</span>
-                  <span className="text-xl font-bold text-purple-600">~$1,050-2,700</span>
+                  <span className="text-xl font-bold text-purple-600">~$550-1,700+</span>
                 </div>
                 <p className="text-xs text-gray-500 italic mt-2">+ Sayari/Kharon API costs (scales with usage)</p>
               </div>
